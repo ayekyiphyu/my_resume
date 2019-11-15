@@ -73,7 +73,10 @@ strong {
   display: block;
   clear: both;
 }
-
+img.arrow-img.is-4.-img {
+    position: relative;
+    top: 7px;
+}
 /*-----------------navbar-----------------*/
 .nav {
   box-sizing: border-box;

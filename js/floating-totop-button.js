@@ -163,7 +163,7 @@
     */
     $.fn.toTopButton.defaults = {
         imagePath: 'images/',
-        arrowType: 'to-top', //
+        arrowType: '', //
         scrollTrigger: 300,
         animationTime: 700,
         opacity: 20,
