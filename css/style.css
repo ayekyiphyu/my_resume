@@ -492,6 +492,16 @@ img.arrow-img.is-4.-img {
   font-weight: bold;
 }
 
+/*filter div*/
+.filter-div {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  text-align: center;
+  
+}
+
+/*end filter div*/
+
 @media screen and (max-width:1000px) {
 .list-style {
   margin: 40px;
