@@ -70,7 +70,10 @@
         iconColor = opts.iconColor == 'b' ? 'b' : 'w';
         
         // image path
-        imgPath = opts.imagePath + '/' + iconColor + '/' + opts.arrowType + '.png';
+        //imgPath = opts.imagePath + '/' + iconColor + '/' + opts.arrowType + '.png';
+      
+        imgPath = opts.imagePath  + opts.arrowType + 'to-top.png';
+      
         
         // border
         bwClass = bwClass + iconColor;
@@ -160,14 +163,14 @@
     */
     $.fn.toTopButton.defaults = {
         imagePath: 'images/',
-        arrowType: 'arrow', //
+        arrowType: 'to-top', //
         scrollTrigger: 300,
         animationTime: 700,
         opacity: 20,
         shape: 10,
         margin: 2,
         palette: '',
-        iconColor: 'w',
+       // iconColor: 'w',
         backgroundColor: '',
         border : { 
             width: 0,
