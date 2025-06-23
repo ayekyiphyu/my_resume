@@ -1,13 +1,39 @@
-# my_resume
----------------------------------------------------------------------------------------------
-This is my portfolilo (2018 Design)
----------------------------------------------------------------------------------------------
+# My Portfolio
 
+## 2025 Portfolio Website
 
-2019 portfolio Design. This is One Page Scroll and using to the Filter Jquery.
+**Overview:**
+This is my personal portfolio website showcasing my web development skills and projects. The site features a modern, clean design with smooth user interactions.
 
-Css is pure no used to framework. 
+**Key Features:**
+- **One-page scroll design** for seamless navigation
+- **Interactive project filtering** using jQuery
+- **Smooth scroll animations** and transitions
+- **Scroll-to-top functionality** for better user experience
+- **Responsive design** that works across all devices
 
-This site is very sample. But using to Scroll Jquery, Filter Jquery, Scroll-top Jquery.
+**Technical Implementation:**
+- **Pure CSS** - No external CSS frameworks used, demonstrating custom styling skills
+- **Vanilla JavaScript & jQuery** for interactive functionality
+- **Custom scroll animations** and smooth page transitions
+- **Filter system** to categorize and display projects dynamically
+- **Optimized performance** with clean, lightweight code
 
--------------------------------------------------------------------------------------------
+**Technologies Used:**
+- HTML5
+- CSS3 (Pure CSS, no frameworks)
+- JavaScript
+- jQuery
+- Responsive Web Design
+
+**Design Philosophy:**
+The portfolio emphasizes simplicity and functionality while maintaining a professional appearance. Every element is crafted to provide an intuitive user experience while showcasing technical capabilities.
+
+---
+
+**Live Demo:** [ayekyiphyu.github.io/my_resume/]
+**Source Code:** [git@github.com:ayekyiphyu/my_resume.git]
+
+---
+
+*This portfolio demonstrates my ability to create engaging, interactive web experiences using fundamental web technologies without relying on heavy frameworks.*
