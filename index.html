@@ -2,682 +2,1318 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>履歴書</title>
-  <link rel="stylesheet" href="css/reset.css">
+    <meta charset="utf-8">
+    <title>履歴書 - AYE KYI PHYU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/floating-totop-button.css">
-  <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Common Section Styles */
+        .wide {
+            width: 100%;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .inner-block {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        /* Profile Section */
+        #profile {
+            background-color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-inner h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .profile-btn {
+            font-size: 1.5rem;
+            color: #ecf0f1;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .social {
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .social a {
+            display: inline-block;
+            margin: 0 15px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        #about {
+            background-color: #ffffff;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-txt-wrap {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .about-txt-wrap ul {
+            list-style: none;
+        }
+
+        .about-txt-wrap li {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .profile-tit {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .about-img-wrap {
+            text-align: center;
+        }
+
+        .about-img {
+            position: relative;
+            display: inline-block;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .middle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 62, 80, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .about-img:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Service Section */
+        #service {
+            background-color: #f8f9fa;
+        }
+
+        .service-block {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .owl-carousel .item {
+            background: #ffffff;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .owl-carousel .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .font-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Skill Section */
+        #skill {
+            background-color: #ffffff;
+        }
+
+        .skill-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .skill-layout div {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .skill-layout div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .skill-layout img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        /* Experience Section */
+        #experience {
+            background-color: #f8f9fa;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .company-name {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .job-period {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .company-info {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skills-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .skills-list li {
+            background: #ffffff;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .skills-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            background: #ffffff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .project-list {
+            list-style: none;
+        }
+
+        .project-list li {
+            background: #f8f9fa;
+            margin: 8px 0;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+        }
+
+        .school {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        /* Work Section */
+        #work {
+            background-color: #ffffff;
+        }
+
+        .work-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .hover-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .work-btn-outline {
+            background: rgba(52, 152, 219, 0.1);
+            border: 2px solid #3498db;
+            color: #3498db;
+        }
+
+        .work-btn-outline-success {
+            background: rgba(46, 204, 113, 0.1);
+            border: 2px solid #2ecc71;
+            color: #2ecc71;
+        }
+
+        .work-btn-outline-secondary {
+            background: rgba(108, 117, 125, 0.1);
+            border: 2px solid #6c757d;
+            color: #6c757d;
+        }
+
+        .work-btn-outline-info {
+            background: rgba(23, 162, 184, 0.1);
+            border: 2px solid #17a2b8;
+            color: #17a2b8;
+        }
+
+        .work-btn-outline-warning {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid #ffc107;
+            color: #ffc107;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                top: 10px;
+                right: 10px;
+                padding: 15px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .profile-inner h1 {
+                font-size: 2.5rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .skill-layout {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+
+            .work-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #2c3e50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: #3498db;
+        }
+
+        /* Additional animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body>
-
-  <!--main-wrapper-->
-  <div id="navigation" class="nav"> <a data-scroll class="hov-color-red" href="#about">About</a> <a data-scroll
-      class="hov-color-green" href="#service">Service</a> <a data-scroll class="hov-color-blue" href="#skill">Skill</a>
-    <a data-scroll class="hov-color-blue" href="#experience">Experience</a> <a data-scroll class="hov-color-blue"
-      href="#work">Work</a>
-  </div>
-  <section id="profile" class="wide">
-    <div class="profile">
-      <div class="profile-inner">
-        <h1>FullStack Engineer</h1>
-        <div class="profile-btn clearfix">React Python Developer</div>
-        <div class="social"> <a href="https://www.facebook.com/messages/t/2028382117221948"><span><i
-                class="fab fa-facebook-messenger"></i></span></a> <a href="https://twitter.com/LilolayKyiPhyu"><span><i
-                class="fab fa-twitter"></i></span></a> <a href="https://plus.google.com/discover"><span><i
-                class="fab fa-google-plus-g"></i></span></a>
-          <a href="https://www.linkedin.com/feed/"><span><i class="fab fa-linkedin-in"></i></span></a>
-        </div>
-      </div>
+    <!-- Navigation -->
+    <div id="navigation" class="nav">
+        <a data-scroll class="hov-color-red" href="#about">About</a>
+        <a data-scroll class="hov-color-green" href="#service">Service</a>
+        <a data-scroll class="hov-color-blue" href="#skill">Skill</a>
+        <a data-scroll class="hov-color-blue" href="#experience">Experience</a>
+        <a data-scroll class="hov-color-blue" href="#work">Work</a>
     </div>
-  </section>
-  <section id="about" class="wide">
-    <h1 class="title">About</h1>
-    <div class="inner-block">
-      <div class="grid-layout">
-        <div class="about-txt-wrap">
-          <h1 class="about-title">Personal Information</h1>
-          <ul>
-            <li><span class="profile-tit">Name </span>:&nbsp AYEKYIPHYU</li>
-            <li><span class="profile-tit">Address</span>:&nbsp TOKYO Japan</li>
-            <li><span class="profile-tit">Email</span>:&nbsp ayekyiphyu92@gmail.com</li>
-          </ul>
-          <!--<a href="cv/AYE KYI PHYU.doc" download>
-        <div class="downlod-btn"> <i class="fas fa-file-download"></i> Download </div>
-        </a>-->
-        </div>
-        <div class="about-img-wrap">
-          <div class="about-img"> <img src="images/computer.jpg" alt="">
-            <div class="middle">
-              <div class="text">AYE KYI PHYU</div>
+
+    <!-- Profile Section -->
+    <section id="profile" class="wide">
+        <div class="profile">
+            <div class="profile-inner">
+                <h1>FullStack Engineer</h1>
+                <div class="profile-btn clearfix">React Python Developer</div>
+                <div class="social">
+                    <a href="https://www.facebook.com/messages/t/2028382117221948"><i
+                            class="fab fa-facebook-messenger"></i></a>
+                    <a href="https://twitter.com/LilolayKyiPhyu"><i class="fab fa-twitter"></i></a>
+                    <a href="https://plus.google.com/discover"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="wide">
+        <h1 class="title">About</h1>
+        <div class="inner-block">
+            <div class="grid-layout">
+                <div class="about-txt-wrap fade-in">
+                    <h1 class="about-title">Personal Information</h1>
+                    <ul>
+                        <li><span class="profile-tit">Name</span>: AYE KYI PHYU</li>
+                        <li><span class="profile-tit">Address</span>: TOKYO Japan</li>
+                        <li><span class="profile-tit">Email</span>: ayekyiphyu92@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="about-img-wrap fade-in">
+                    <div class="about-img">
+                        <img src="images/computer.jpg"
+                            alt="Profile">
+                        <div class="middle">
+                            <div class="text">AYE KYI PHYU</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section id="service" class="wide">
+        <h1 class="title">Service</h1>
+        <div class="inner-block">
+            <div class="service-block fade-in">
+                <div class="owl-carousel owl-theme">
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fas fa-code"></i></h1>
+                        <p class="service-title">Web Development</p>
+                    </div>
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fab fa-wordpress"></i></h1>
+                        <p class="service-title">WordPress</p>
+                    </div>
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fab fa-react"></i></h1>
+                        <p class="service-title">React/Python</p>
+                    </div>
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fas fa-server"></i></h1>
+                        <p class="service-title">API Development</p>
+                    </div>
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fas fa-mobile-alt"></i></h1>
+                        <p class="service-title">Responsive Design</p>
+                    </div>
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fas fa-camera-retro"></i></h1>
+                        <p class="service-title">Photography</p>
+                    </div>
+                    <div class="item">
+                        <h1 class="pt-3 font-icon"><i class="fas fa-headset"></i></h1>
+                        <p class="service-title">Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Section -->
+    <section id="skill" class="wide">
+        <h1 class="title">Skills</h1>
+        <div class="inner-block">
+            <div class="skill-layout fade-in">
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="JavaScript"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                        alt="Node.js">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                        alt="TypeScript"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                        alt="Angular"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
+                        alt="Vue.js"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg"
+                        alt="Laravel">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                        alt="MongoDB">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                        alt="PostgreSQL"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                        alt="Docker">
+                </div>
+                <div><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                        alt="GCP"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg"
+                        alt="WordPress"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                        alt="Bootstrap"></div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg"
+                        alt="jQuery">
+                </div>
+                <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                        alt="Firebase">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="wide">
+        <h1 class="title">Experience</h1>
+        <div class="inner-block">
+            <h2 class="text-center"><i class="fas fa-briefcase"></i></h2>
+
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">株式会社キャムテック</h3>
+                    <h4 class="job-period">2023年04月 ~ 2025年06月</h4>
+                    <div class="company-info">
+                        <p>【所属】フルスタック開発企業 日本の株式会社　＠日本</p>
+                    </div>
+                    <ul class="skills-list">
+                        <li>- React.js / Next.js</li>
+                        <li>- TypeScript / JavaScript</li>
+                        <li>- Node.js / Express</li>
+                        <li>- MongoDB / PostgreSQL</li>
+                        <li>- REST API / GraphQL</li>
+                        <li>- Docker / AWS</li>
+                        <li>- Git / GitHub</li>
+                        <li>- Tailwind CSS / Styled Components</li>
+                        <li>- Jest / Cypress (Testing)</li>
+                        <li>- Figma / Adobe XD</li>
+                    </ul>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [Eコマースプラットフォーム開発]</u></p>
+                        <ul class="project-list">
+                            <li>- React.js + Next.jsを使用したフロントエンド開発</li>
+                            <li>- Node.js + Expressでバックエンド API 開発</li>
+                            <li>- MongoDB を使用したデータベース設計</li>
+                            <li>- Stripe決済システム統合</li>
+                            <li>- AWS S3 + CloudFront でファイル管理</li>
+                            <li>- Docker コンテナ化とデプロイメント</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [企業向けダッシュボード]</u></p>
+                        <ul class="project-list">
+                            <li>- React.js + TypeScript でUI開発</li>
+                            <li>- GraphQL APIとの連携</li>
+                            <li>- PostgreSQL データベース最適化</li>
+                            <li>- Chart.js を使用したデータ可視化</li>
+                            <li>- レスポンシブデザイン実装</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div class="job-section">
+                    <h3 class="text-center company-name">ファーストループテクノロジー株式会社</h3>
+                    <h4 class="job-period">2020年10月 ~ 2023年03月</h4>
+                    <div class="company-info">
+                        <p>【所属】ウェブ開発・システム開発企業 日本の株式会社　＠日本</p>
+                    </div>
+                    <ul class="skills-list">
+                        <li>- React.js / Vue.js</li>
+                        <li>- JavaScript / ES6+</li>
+                        <li>- PHP / Laravel</li>
+                        <li>- MySQL / Firebase</li>
+                        <li>- REST API 開発</li>
+                        <li>- Bootstrap / Sass</li>
+                        <li>- WordPress カスタム開発</li>
+                        <li>- Git / GitLab</li>
+                        <li>- Adobe Creative Suite</li>
+                        <li>- レスポンシブデザイン</li>
+                    </ul>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [コーポレートウェブサイト開発]</u></p>
+                        <ul class="project-list">
+                            <li>- React.js でSPAアプリケーション開発</li>
+                            <li>- Laravel バックエンド API 開発</li>
+                            <li>- MySQL データベース設計・構築</li>
+                            <li>- Adobe XD からのデザイン実装</li>
+                            <li>- SEO最適化とパフォーマンス向上</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [ECサイト リニューアル]</u></p>
+                        <ul class="project-list">
+                            <li>- Vue.js + Vuex でフロントエンド構築</li>
+                            <li>- PHP + Laravel でバックエンド開発</li>
+                            <li>- 決済システム統合（PayPal, Stripe）</li>
+                            <li>- Firebase を使用したリアルタイム機能</li>
+                            <li>- レスポンシブデザイン対応</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">株式会社グローバルウェイ ( 英文: Globalway, Inc. )</h3>
+                    <h4 class="job-period">2019年01月 ~ 2020年09月</h4>
+                    <div class="company-info">
+                        <p>【所属】IT開発系企業 日本の株式会社　＠日本</p>
+                    </div>
+                    <ul class="skills-list">
+                        <li>- Angular Js</li>
+                        <li>- Mobile Responsive Design</li>
+                        <li>- Photoshop/Illustrator/ InDesign/ Adobe Dreamweaver/ sublime Text</li>
+                        <li>- Create home page Design</li>
+                        <li>- Git/ SourcesTree</li>
+                        <li>- CSS/sass</li>
+                        <li>- jQuery plugin</li>
+                        <li>- JavaScript</li>
+                        <li>- InDesignを使って会社の為に名刺を作ることがありました。</li>
+                    </ul>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [ Voxer OMS Order Management System]</u></p>
+                        <ul class="project-list">
+                            <li>- Photoshop/illustrator を使ってデザイン設計を作成</li>
+                            <li>- Angaular Jsを使ってfront end ぺジーを作成</li>
+                            <li>- Git (sourcetree)を使う</li>
+                            <li>- Bootstrp4.3.1,Jquery pluginを使う</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [ Globalway Company Home Page]</u></p>
+                        <ul class="project-list">
+                            <li>- Wordpress を使って新しいテーマを作成</li>
+                            <li>- Photoshop/Illustratorを使って画像を作成</li>
+                            <li>- PHPを使う</li>
+                            <li>- Boostrapを使う</li>
+                            <li>- Wordpress Custom Field Templateを作成</li>
+                            <li>- Saleforce form使う</li>
+                            <li>- Git (source tree)</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [ Tech Globalway Website]</u></p>
+                        <ul class="project-list">
+                            <li>- Wordpress</li>
+                            <li>- Photoshop/Illustratorを使って画像を作成</li>
+                            <li>- Photoshop/Illustratorの中にデザインmock up 作成</li>
+                            <li>- HTML5, Javascript, Jqueryを使って.html mockup 作成</li>
+                            <li>- Boostrap3.4.1 使う</li>
+                            <li>- Wordpress Custom Field Templateを作成</li>
+                            <li>- Saleforce form使う</li>
+                            <li>- Git (source tree)</li>
+                            <li>- Multiple Language Plugin</li>
+                            <li>- 色々pluginを使う</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： [ ITJ]</u></p>
+                        <ul class="project-list">
+                            <li>- HTML, CSS, JavaScript, jQuery</li>
+                            <li>- Git (SourceTree)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">グットビー株式会社</h3>
+                    <h4 class="job-period">2016年10月1日 ~ 2018年12月1日</h4>
+                    <div class="company-info">
+                        <p>【所属】IT開発系企業　＠日本</p>
+                        <p>【業務詳細】</p>
+                    </div>
+                    <ul class="skills-list">
+                        <li>日本企業で使用する業務用システムを開発 自社の中に使う予定表システムを開発</li>
+                        <li>ミャンマー人採用サイトシステムを開発 ミャンマーで使うポイントシステムを開発</li>
+                        <li>首都システムを開発</li>
+                    </ul>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： 社内予定表</u></p>
+                        <ul class="project-list">
+                            <li>・会社員の登録、メモ登録</li>
+                            <li>・言語：PHP, Mysql, Bootstrap, Javascript, Jquery</li>
+                            <li>・使用データベース：Mysql</li>
+                            <li>・担当業務：コーディング、テストケース設計</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： ミャンマー人採用システム</u></p>
+                        <ul class="project-list">
+                            <li>・会員登録, 仕事探し, smtp mail, 引退についての管理</li>
+                            <li>・言語：Zend PHP, Mysql, Bootstrap, Javascript, Jquery</li>
+                            <li>・使用データベース：Mysql</li>
+                            <li>・担当業務：コーディング、テストケース設計</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： ミャンマーポイントシステム</u></p>
+                        <ul class="project-list">
+                            <li>・会員登録, プリペイドカード登録、お問い合わせ,アンケート回答, アンケート登録</li>
+                            <li>・言語：Zend PHP, Mysql, Bootstrap, Javascript, Jquery</li>
+                            <li>・使用データベース：Mysql</li>
+                            <li>・担当業務：コーディング、テストケース設計</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">Aidam Myanmar Co., Ltd (Sea Dream Co.,Ltd)</h3>
+                    <h4 class="job-period">2014年05月 ~ 2016年07月</h4>
+                    <div class="company-info">
+                        <p>【所属】IT開発系企業 日本の株式会社　＠ミャンマー</p>
+                        <p>【業務詳細】日本企業で使用する業務用WEBアプリケーションを開発</p>
+                    </div>
+                    <ul class="skills-list">
+                        <li>・ミャンマーで開発したシステムを日本のスーパーで利用</li>
+                        <li>・日本語での開発・プロジェクト管理</li>
+                        <li>・日本とビデオミーティングや担当者との会議を実施</li>
+                        <li>・全員と相談して自社サイトを作成 ・主にwordpressのサイトを作成</li>
+                        <li>・3月日本でをwordpress/phpのトレーニングに参加する</li>
+                    </ul>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： スケジュール管理システム（社内利用）</u></p>
+                        <ul class="project-list">
+                            <li>・利用者がスケジュール登録、修正ができるシステムの開発（一週間、一ヶ月、一年単位で表示可能）</li>
+                            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML5, CSS3, Bootstrap3</li>
+                            <li>・使用データベース：MySQL</li>
+                            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： レポートシステム(メールの送受信システム)</u></p>
+                        <ul class="project-list">
+                            <li>・社内でイベントなどの際に連絡できるシステム</li>
+                            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML, CSS3, Bootstrap3, acmailer</li>
+                            <li>・使用データベース：MySQL</li>
+                            <li>・担当業務：コーディング、結合テスト、総合テスト、受け入れテスト</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>プロジェクト名： 社内の勤怠管理システム</u></p>
+                        <ul class="project-list">
+                            <li>・休暇申請、タイムチェック、シフト登録などが出来る社内用のアプリケーション開発</li>
+                            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML5, CSS3, Bootstrap3.</li>
+                            <li>・使用データベース：MySQL</li>
+                            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト、手順書</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">Progineer Co.Ltd(Singapore)</h3>
+                    <h4 class="job-period">2013年03月 ~ 2014年04月</h4>
+                    <div class="company-info">
+                        <p>【所属】ソフトウェア 会社　＠ミャンマー</p>
+                        <p>【業務詳細】</p>
+                    </div>
+                    <ul class="skills-list">
+                        <li>・オフィスのアポイントメント調整 ・Singapore向け　人材管理システム端末開発</li>
+                        <li>・自社のサイト ・自社のオンラインショッピング ・レンタルサービス</li>
+                        <li>・クライアントのためスケジュール作成 ・ウェブページ作成 ・デザイン作成</li>
+                        <li>・お客様とコミュニケーション</li>
+                    </ul>
+
+                    <div class="project-section">
+                        <p class="project-title"><u>システム環境</u></p>
+                        <ul class="project-list">
+                            <li>Windows 7, Microsoft Office, SQL Server 2008, HTML5, JavaScript, JQuery, CSS3, Adobe
+                                Creative Package,
+                                Drupal, Pure CSS, Bootstrap2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <h2 class="text-center"><i class="fas fa-graduation-cap"></i></h2>
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">学歴</h3>
+                    <div class="project-section">
+                        <p class="project-title">小学校 (1997年6月～2002年2月)</p>
+                        <p class="school">AaMaYa(20) Nyaung Lay Bin(卒業)</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">中学校 (2002年6月 ～ 2006年2月)</p>
+                        <p class="school">No(1), BEHS Middle School(卒業)</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">高校 (2006年6月 ～ 2008年 3月)</p>
+                        <p class="school">NO(3), Mingalar Taung Nyunt(卒業)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- University Section -->
+            <h2 class="text-center"><i class="fas fa-university"></i></h2>
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">大学</h3>
+                    <div class="project-section">
+                        <p class="project-title">Yangon East University (2008年12月～2012年12月)</p>
+                        <p class="school">BA(Law) (卒業)</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">University of Greenwich (2008年12月～2011年12月)</p>
+                        <p class="school">Business Information Technology (卒業)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications Section -->
+            <h2 class="text-center"><i class="fas fa-award"></i></h2>
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">取得済み資格</h3>
+                    <div class="project-section">
+                        <p class="project-title">International Diploma in Computer Studies</p>
+                        <p class="school">2009年10月22日</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">International Advanced Diploma in Computer Studies</p>
+                        <p class="school">2010年10月1日</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">Web Design Course</p>
+                        <p class="school">2012年6月1日</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">Java and Visual Basic</p>
+                        <p class="school">2010年7月1日</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Skills Section -->
+            <h2 class="text-center"><i class="fas fa-globe-asia"></i></h2>
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+                <div>
+                    <h3 class="text-center company-name">言語スキル</h3>
+                    <div class="project-section">
+                        <p class="project-title">日本語</p>
+                        <p class="school">日本語能力試験 N1</p>
+                    </div>
+                    <div class="project-section">
+                        <p class="project-title">英語</p>
+                        <p class="school">English Fluent Level</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="wide">
+        <h1 class="title">Work Portfolio</h1>
+        <div class="inner-block">
+            <div class="work-layout">
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">Angular JS</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">JQuery/Javascript</div>
+                        <div class="btn work-btn-outline-info">MySQL</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">WordPress</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-success">PHP</div>
+                        <div class="btn work-btn-outline-secondary">JQuery/Javascript</div>
+                        <div class="btn work-btn-outline-info">MySQL</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">React</div>
+                        <div class="btn work-btn-outline-success">Next.js</div>
+                        <div class="btn work-btn-outline-secondary">Javascript</div>
+                        <div class="btn work-btn-outline-info">MongoDB</div>
+                        <div class="btn work-btn-outline-warning">REST API</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">Python</div>
+                        <div class="btn work-btn-outline-success">React</div>
+                        <div class="btn work-btn-outline-secondary">FastApi</div>
+                        <div class="btn work-btn-outline-info">PostgreSQL</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">React</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">Javascript</div>
+                        <div class="btn work-btn-outline-warning">GraphQL API</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">Next.js</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">TypeScript</div>
+                        <div class="btn work-btn-outline-info">Firebase</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">React Vite</div>
+                        <div class="btn work-btn-outline-success">Restful api</div>
+                        <div class="btn work-btn-outline-secondary">SQLite</div>
+                        <div class="btn work-btn-outline-warning">Firebase</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">React</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">Javascript</div>
+                        <div class="btn work-btn-outline-info">SQLite</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">HTML</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">WordPress</div>
+                        <div class="btn work-btn-outline-info">MySQL</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">Next.js</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">PHP</div>
+                        <div class="btn work-btn-outline-warning">API Integration</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">HTML</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-secondary">PHP</div>
+                        <div class="btn work-btn-outline-info">MongoDB</div>
+                    </div>
+                </div>
+
+                <div class="hover-card">
+                    <div class="mt-10">
+                        <div class="btn work-btn-outline">React</div>
+                        <div class="btn work-btn-outline-success">CSS</div>
+                        <div class="btn work-btn-outline-warning">REST API</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Portfolio Design By AYE KYI PHYU - FullStack Developer</p>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
-  </section>
-  <section id="service" class="wide">
-    <h1 class="title">Service</h1>
-    <div class="inner-block">
-      <div class="service-block">
-        <div class="owl-carousel owl-theme ">
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fas fa-code"></i></h1>
-            <p class="service-title">Web Developement</p>
 
-          </div>
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fab fa-wordpress"></i></h1>
-            <p class="service-title">Wordpress</p>
-          </div>
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fas fa-laptop"></i></h1>
-            <p class="service-title">React/python</p>
-          </div>
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fas fa-laptop"></i></h1>
-            <p class="service-title">API</p>
-          </div>
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fas fa-laptop"></i></h1>
-            <p class="service-title">Responsive</p>
-          </div>
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fas fa-camera-retro"></i></h1>
-            <p class="service-title">Photograph</p>
-          </div>
-          <div class="item">
-            <h1 class="pt-3 font-icon"><i class="fas fa-briefcase"></i></h1>
-            <p class="service-title">Support</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="skill" class="wide">
-    <h1 class="title">Skill</h1>
-    <div class="inner-block">
-      <div class="skill-layout">
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+    <script>
+        jQuery(document).ready(function ($) {
+            // Smooth scrolling for navigation
+            function scrollToSection(event) {
+                event.preventDefault();
+                var $section = $($(this).attr('href'));
+                $('html, body').animate({
+                    scrollTop: $section.offset().top - 20
+                }, 800);
+            }
+            $('[data-scroll]').on('click', scrollToSection);
 
-        <div><img src="images/bulma-logo.png" alt=""></div>
-        <div><img src="images/circle-ci.png" alt=""></div>
-        <div><img src="images/spring boot.png" alt=""></div>
-        <div><img src="images/pp.png" alt=""></div>
-        <div><img src="images/23212C5056F415452C.png" alt="">
-        </div>
-        <div><img src="images/ai.jpg" alt=""></div>
-        <div><img src="images/wordpress.png" alt=""></div>
-        <div><img src="images/anuglar.png" alt=""></div>
-        <div><img src="images/jquery.png" alt=""></div>
-        <div><img src="images/bootstrap-social.png" alt=""></div>
-        <div><img src="images/zf-logo-mark.png" alt=""></div>
-        <div><img src="images/vue.png" alt=""></div>
-        <div><img src="images/react.png" alt=""></div>
-        <div><img src="images/Python-Symbol.png" alt=""></div>
-        <div><img src="images/AI.jpg" alt=""></div>
-        <div><img src="images/gcp.png" alt=""></div>
-        <div><img src="images/aws.png" alt=""></div>
-        <div><img src="images/docker.png" alt=""></div>
-        <div><img src="images/fast.png" alt=""></div>
-        <div><img src="images/postsql.png" alt=""></div>
-        <div><img src="images/sql.jpg" alt=""></div>
-        <div><img src="images/figma.png" alt=""></div>
-        <div><img src="images/laravel.png" alt=""></div>
-      </div>
-    </div>
-  </section>
-  <section id="experience" class="wide">
-    <h1 class="title">Experience</h1>
-    <div class="inner-block">
-      <h2 class="text-center"><i class="fas fa-briefcase"></i> </h2>
-      <div id="vt1">
+            // Owl Carousel initialization
+            $('.owl-carousel').owlCarousel({
+                margin: 20,
+                nav: true,
+                loop: true,
+                dots: true,
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
 
-        <div>
-          <h3 class="text-center company-name">株式会社キャムテック</h3>
-          <h4 class="job-period">2023年04月 ~ 2025年06月</h4>
-          <div class="company-info">
-            <p>【所属】フルスタック開発企業 日本の株式会社　＠日本</p>
-          </div>
-          <ul class="skills-list">
-            <li>- React.js / Next.js</li>
-            <li>- TypeScript / JavaScript</li>
-            <li>- Node.js / Express</li>
-            <li>- MongoDB / PostgreSQL</li>
-            <li>- REST API / GraphQL</li>
-            <li>- Docker / AWS</li>
-            <li>- Git / GitHub</li>
-            <li>- Tailwind CSS / Styled Components</li>
-            <li>- Jest / Cypress (Testing)</li>
-            <li>- Figma / Adobe XD</li>
-          </ul>
-          <br>
-          <div class="project-section">
-            <p class="project-title"><u>プロジェクト名： [Eコマースプラットフォーム開発]</u></p>
-            <ul class="project-list">
-              <li>- React.js + Next.jsを使用したフロントエンド開発</li>
-              <li>- Node.js + Expressでバックエンド API 開発</li>
-              <li>- MongoDB を使用したデータベース設計</li>
-              <li>- Stripe決済システム統合</li>
-              <li>- AWS S3 + CloudFront でファイル管理</li>
-              <li>- Docker コンテナ化とデプロイメント</li>
-            </ul>
-          </div>
-          <br>
+            // Scroll animations
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
 
-          <div class="project-section">
-            <p class="project-title"><u>プロジェクト名： [企業向けダッシュボード]</u></p>
-            <ul class="project-list">
-              <li>- React.js + TypeScript でUI開発</li>
-              <li>- GraphQL APIとの連携</li>
-              <li>- PostgreSQL データベース最適化</li>
-              <li>- Chart.js を使用したデータ可視化</li>
-              <li>- レスポンシブデザイン実装</li>
-            </ul>
-          </div>
-        </div>
+            function animateOnScroll() {
+                $('.fade-in').each(function () {
+                    if (isElementInViewport(this)) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
 
+            $(window).on('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
 
-        <div class="job-section">
-          <h3 class="text-center company-name">ファーストループテクノロジー株式会社</h3>
-          <h4 class="job-period">2020年10月 ~ 2023年03月</h4>
-          <div class="company-info">
-            <p>【所属】ウェブ開発・システム開発企業 日本の株式会社　＠日本</p>
-          </div>
-          <ul class="skills-list">
-            <li>- React.js / Vue.js</li>
-            <li>- JavaScript / ES6+</li>
-            <li>- PHP / Laravel</li>
-            <li>- MySQL / Firebase</li>
-            <li>- REST API 開発</li>
-            <li>- Bootstrap / Sass</li>
-            <li>- WordPress カスタム開発</li>
-            <li>- Git / GitLab</li>
-            <li>- Adobe Creative Suite</li>
-            <li>- レスポンシブデザイン</li>
-          </ul>
-          <br />
+            // Scroll to top functionality
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $('#scrollToTop').addClass('show');
+                } else {
+                    $('#scrollToTop').removeClass('show');
+                }
+            });
 
-          <div class="project-section">
-            <p class="project-title"><u>プロジェクト名： [コーポレートウェブサイト開発]</u></p>
-            <ul class="project-list">
-              <li>- React.js でSPAアプリケーション開発</li>
-              <li>- Laravel バックエンド API 開発</li>
-              <li>- MySQL データベース設計・構築</li>
-              <li>- Adobe XD からのデザイン実装</li>
-              <li>- SEO最適化とパフォーマンス向上</li>
-            </ul>
-          </div>
+            $('#scrollToTop').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
 
-          <br />
+            // Navigation background on scroll
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.nav').css('background', 'rgba(255, 255, 255, 0.98)');
+                } else {
+                    $('.nav').css('background', 'rgba(255, 255, 255, 0.95)');
+                }
+            });
 
-          <div class="project-section">
-            <p class="project-title"><u>プロジェクト名： [ECサイト リニューアル]</u></p>
-            <ul class="project-list">
-              <li>- Vue.js + Vuex でフロントエンド構築</li>
-              <li>- PHP + Laravel でバックエンド開発</li>
-              <li>- 決済システム統合（PayPal, Stripe）</li>
-              <li>- Firebase を使用したリアルタイム機能</li>
-              <li>- レスポンシブデザイン対応</li>
-            </ul>
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-        <div>
-          <h3 class="text-center">株式会社グローバルウェイ ( 英文: Globalway, Inc. )</h3>
-          <h4>2019年01月 ~ 2020年09月</h4>
-          <p>【所属】IT開発系企業 日本の株式会社　＠日本 </p>
-          <ul>
-            <li>- Angular Js </li>
-            <li>- Mobile Responsive Design </li>
-            <li>- Photoshop/Illustrator/ InDesign/ Adobe Dreamweaver/ sublime Text</li>
-            <li>- Create home page Design </li>
-            <li>- Git/ SourcesTree </li>
-            <li>- CSS/sass </li>
-            <li>- jQuery plugin </li>
-            <li>- JavaScript</li>
-            <li>- InDesignを使って会社の為に名刺を作ることがありました。 </li>
-
-          </ul>
-          <br>
-          <p><u>プロジェクト名： [ Voxer OMS Order Management System]</u></p>
-
-          <ul>
-            <li>- Photoshop/illustrator を使ってデザイン設計を作成</li>
-            <li>- Angaular Jsを使ってfront end ぺジーを作成</li>
-            <li>- Git (sourcetree)を使う</li>
-            <li>- Bootstrp4.3.1,Jquery pluginを使う</li>
-          </ul>
-
-          <br>
-          <ul>
-            <p><u>プロジェクト名： [ Globalway Company Home Page]</u></p>
-            <li>- Wordpress を使って新しいテーマを作成</li>
-            <li>- Photoshop/Illustratorを使って画像を作成</li>
-            <li>- PHPを使う</li>
-            <li>- Boostrapを使う</li>
-            <li>- Wordpress Custom Field Templateを作成</li>
-            <li>- Saleforce form使う</li>
-            <li>- Git (source tree)</li>
-
-          </ul>
-          <br>
-          <p><u> プロジェクト名： [ Tech Globalway Website]</u></p>
-          <ul>
-            <li>- Wordpress</li>
-            <li>- Photoshop/Illustratorを使って画像を作成r</li>
-            <li>- Photoshop/Illustratorの中にデザインmock up 作成</li>
-            <li>- HTML5, Javascript, Jqueryを使って.html mockup 作成</li>
-            <li>- Boostrap3.4.1 使う</li>
-            <li>- Wordpress Custom Field Templateを作成</li>
-            <li>- Saleforce form使う</li>
-            <li>- Git (source tree)</li>
-            <li>- Multiple Language Plugin </li>
-            <li>- 色々pluginを使う</li>
-          </ul>
-          <br>
-          <p><u>プロジェクト名： [ ITJ]</u></p>
-          <ul>
-            <li>- HTML, CSS, JavaScript, jQuery</li>
-            <li>- Git (SourceTree)</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-center">グットビー株式会社</h3>
-          <h4>2016年10月1日 ~ 2018年12月1日</h4>
-          <p>【所属】IT開発系企業　＠日本　</p>
-          <p>【業務詳細】 </p>
-          <ul>
-            <li>日本企業で使用する業務用システムを開発 自社の中に使う予定表システムを開発 </li>
-            <li>ミャンマー人採用サイトシステムを開発 ミャンマーで使うポイントシステムを開発 </li>
-            <li> 首都システムを開発</li>
-          </ul>
-          <br>
-          <p>【常駐先】 <br>グットビー株式会社 <br>
-            プロジェクト名　社内予定表
-          </p>
-          <ul>
-            <li>・会社員の登録、メモ登録 </li>
-            <li>・言語：PHP,　Mysql, Bootstrap, Javascript, Jquery</li>
-            <li>・使用データベース：Mysql</li>
-            <li>・担当業務：コーディング、テストケース設計</li>
-          </ul>
-          <br>
-          <p>プロジェクト名　ミャンマー人採用システム</p>
-          <ul>
-            <li>・会員登録, 仕事探し, smtp mail,　引退についての管理</li>
-            <li>・言語：Zend PHP,　Mysql, Bootstrap, Javascript, Jquery</li>
-            <li>・使用データベース：Mysql</li>
-            <li>・担当業務：コーディング、テストケース設計</li>
-          </ul>
-          <br>
-          <p>プロジェクト名　ミャンマーポイントシステム</p>
-          <ul>
-            <li>・会員登録, 仕事探し, smtp mail,　引退についての管理</li>
-            <li>・言語：Zend PHP,　Mysql, Bootstrap, Javascript, Jquery</li>
-            <li>・使用データベース：Mysql</li>
-            <li>・担当業務：コーディング、テストケース設計</li>
-          </ul>
-          <br>
-          <p>プロジェクト名　ミャンマーポイントシステム</p>
-          <ul>
-            <li>・会員登録, プリペイドカード登録、お問い合わせ,アンケート回答, アンケート登録</li>
-            <li>・言語：Zend PHP,　Mysql, Bootstrap, Javascript, Jquery</li>
-            <li>・使用データベース：Mysql</li>
-            <li>・担当業務：コーディング、テストケース設計</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-center">Aidam Myanmar Co., Ltd (Sea Dream Co.,Ltd)</h3>
-          <h4>2014年05月 ~ 2016年07月</h4>
-          <p>【所属】IT開発系企業 日本の株式会社　＠ミャンマー 【業務詳細】 <br>日本企業で使用する業務用WEBアプリケーションを開発 </p>
-          <ul>
-            <li>・ミャンマーで開発したシステムを日本のスーパーで利用 </li>
-            <li>・日本語での開発・プロジェクト管理 </li>
-            <li>・日本とビデオミーティングや担当者との会議を実施 </li>
-            <li>・全員と相談して自社サイトを作成 ・主にwordpressのサイトを作成 </li>
-            <li>・全員と相談して自社サイトを作成 ・全員と相談して自社サイトを作成 </li>
-            <li>・3月日本でをwordpress/phpのトレーニングに参加する </li>
-
-          </ul>
-          <br>
-          <p><u>システム</u></p>
-          <p>プロジェクト名　-　スケジュール管理システム（社内利用）</p>
-          <ul>
-            <li>・利用者がスケジュール登録、修正ができるシステムの開発（一週間、一ヶ月、一年単位で表示可能）</li>
-            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML5, CSS3, Bootstrap3</li>
-            <li>・使用データベース：MySQL</li>
-            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト</li>
-          </ul>
-
-          <br>
-          <ul>
-            <li>プロジェクト名　-レポートシステム(メールの送受信システム)</li>
-            <li>・社内でイベントなどの際に連絡できるシステム</li>
-            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML, CSS3, Bootstrap3, acmailer</li>
-            <li>・使用データベース：MySQL</li>
-            <li>・担当業務：コーディング、結合テスト、総合テスト、受け入れテスト</li>
-          </ul>
-          <br>
-          <p> プロジェクト名　-社内の勤怠管理システム</p>
-          <ul>
-            <li>・社内でイベントなどの際に連絡できるシステム</li>
-            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML, CSS3, Bootstrap3, acmailer</li>
-            <li>・使用データベース：MySQL</li>
-            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト</li>
-          </ul>
-          <br>
-          <p>プロジェクト名　-社内の勤怠管理システム</p>
-          <ul>
-            <li>・休暇申請、タイムチェック、シフト登録などが出来る社内用のアプリケーション開発</li>
-            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML5, CSS3, Bootstrap3.</li>
-            <li>・使用データベース：MySQL</li>
-            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト、手順書</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-center">Progineer Co.Ltd(Singapore) </h3>
-          <h4>2013年03月 ~ 2014年04月</h4>
-          <p>
-            【所属】ソフトウェア 会社　＠ミャンマー 【業務詳細】
-          <ul>
-            <li>・オフィスのアポイントメント調整 ・Singapore向け　人材管理システム端末開発</li>
-            <li>・自社のサイト ・自社のオンラインショッピング ・レンタルサービス</li>
-            <li>・クライアントのためスケジュール作成 ・ウェブページ作成 ・デザイン作成 </li>
-            <li>・お客様とコミュニケーション </li>
-          </ul>
-          【システム環境】 <br>
-          Windows 7,Microsoft Office, SQL Server 2008, HTML5, JavaScript, JQuery, CSS3, Adobe Creatice Package, Drupal,
-          Pure Css, Bootstrap2
-          </p>
-        </div>
-
-
-
-      </div>
-      <!-- End vt1 -->
-      <h2 class="text-center"><i class="fas fa-graduation-cap"></i></h2>
-      <div id="vt2">
-        <div data-vtdate="小学校">
-          <h3 class="text-center">1997年6月～2002年2月</h3>
-          <h4 class="text-center">小学校</h4>
-          <p class="school">AaMaYa(20) Nyaung Lay Bin(卒業) </p>
-        </div>
-        <div data-vtdate="中学校">
-          <h3 class="text-center">2002年6月 ～ 2006年2月</h3>
-          <h4 class="text-center">中学校</h4>
-          <p class="school"> No(1), BEHS Middle School(卒業) </p>
-        </div>
-        <div data-vtdate="高校">
-          <h3 class="text-center">2006年6月 ～ 2008年 3月</h3>
-          <h4 class="text-center">高校</h4>
-          <p class="school"> NO(3), Mingalar Taung Nyunt(卒業) </p>
-        </div>
-      </div>
-      <!-- End vt2 -->
-      <h2 class="text-center"><i class="fas fa-university"></i></h2>
-      <div id="vt3">
-        <div data-vtdate="大学">
-          <h3 class="text-center">2008 年12月～2012年12月</h3>
-          <p class="school">Yangon East University BA(Law)<br>(卒業)</p>
-        </div>
-        <div data-vtdate="大学">
-          <h3 class="text-center">2008年12月～2011年12月</h3>
-          <p class="school">University of Greenwich <br>Business Information Technology<br>(卒業)</p>
-        </div>
-      </div>
-      <!-- End vt3 -->
-      <h2 class="text-center"><i class="fas fa-award"></i></h2>
-      <div id="vt4">
-        <div data-vtdate="取得済み資格">
-          <h3 class="text-center">International Diploma in Computer Studies</h3>
-          <p class="school"> 2009年10月22日</p>
-        </div>
-        <div data-vtdate="取得済み資格">
-          <h3 class="text-center">International Advanced Diploma in Computer Studies</h3>
-          <p class="school"> 2010年10月1日</p>
-        </div>
-        <div data-vtdate="取得済み資格">
-          <h3 class="text-center">Web Design Course</h3>
-          <p class="school">2012年6月1日</p>
-        </div>
-        <div data-vtdate="取得済み資格">
-          <h3 class="text-center">Java and Visual Basic</h3>
-          <p class="school">2010年7月1日</p>
-        </div>
-      </div>
-      <!-- End vt4 -->
-      <h2 class="text-center"><i class="fas fa-globe-asia"></i></h2>
-      <div id="vt5">
-        <div data-vtdate="言語レベル">
-          <h3 class="text-center">日本語</h3>
-          <h4 class="school">レベル</h4>
-          <p class="school">日本語能力試験 N1 </p>
-        </div>
-        <div data-vtdate="英語レベル">
-          <h4 class="school">レベル</h4>
-          <p class="school">English Fluent Level</p>
-        </div>
-      </div>
-      <!-- End vt6 -->
-    </div>
-  </section>
-
-  <section id="work" class="wide">
-    <h1 class="title">Work</h1>
-    <div class="inner-block">
-      <div class="work-layout">
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">Angular JS</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">JQuery/Javascript</div>
-            <div class="btn work-btn-outline-info">MySQL</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">WordPress</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-success">PHP</div>
-            <div class="btn work-btn-outline-secondary">JQuery/Javascript</div>
-            <div class="btn work-btn-outline-info">MySQL</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">React</div>
-            <div class="btn work-btn-outline-success">Next.js</div>
-            <div class="btn work-btn-outline-secondary">Javascript</div>
-            <div class="btn work-btn-outline-info">MongoDB</div>
-            <div class="btn work-btn-outline-warning">REST API</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">HTML</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">Javascript/jQuery</div>
-            <div class="btn work-btn-outline-info">PostgreSQL</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">React</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">Javascript</div>
-            <div class="btn work-btn-outline-warning">GraphQL API</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">Next.js</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">TypeScript</div>
-            <div class="btn work-btn-outline-info">Firebase</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">HTML</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">Javascript</div>
-            <div class="btn work-btn-outline-warning">REST API</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">React</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">Javascript</div>
-            <div class="btn work-btn-outline-info">SQLite</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">HTML</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">WordPress</div>
-            <div class="btn work-btn-outline-info">MySQL</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">Next.js</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">PHP</div>
-            <div class="btn work-btn-outline-warning">API Integration</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">HTML</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-secondary">PHP</div>
-            <div class="btn work-btn-outline-info">MongoDB</div>
-          </div>
-        </div>
-
-        <div class="hover-card">
-          <div class="mt-10">
-            <div class="btn work-btn-outline">React</div>
-            <div class="btn work-btn-outline-success">CSS</div>
-            <div class="btn work-btn-outline-warning">REST API</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <footer class="footer">&copy2019 portfolio Design By PHYU</footer>
-  <!--js-->
-  <script type="text/javascript" src="js/jquery3.3.1.js"></script>
-  <script src="js/owl.carousel.js"></script>
-  <script src="js/vertical-timeline.js"></script>
-  <script src="js/picturehover.js"></script>
-  <script src="js/jquery.lineProgressbar.js"></script>
-  <script src="js/floating-totop-button.js"></script>
-  <script>
-    jQuery(document).ready(function ($) {
-      function scrollToSection(event) {
-        event.preventDefault();
-        var $section = $($(this).attr('href'));
-        $('html, body').animate({
-          scrollTop: $section.offset().top
-        }, 500);
-      }
-      $('[data-scroll]').on('click', scrollToSection);
-    }(jQuery));
-    //carousel
-    $(document).ready(function () {
-      var owl = $('.owl-carousel');
-      owl.owlCarousel({
-        margin: 10,
-        nav: true,
-        loop: true,
-        responsive: {
-          0: {
-            items: 1
-          },
-          600: {
-            items: 3
-          },
-          1000: {
-            items: 5
-          }
-        }
-      })
-    })
-    //timeline
-    $('#vt1').verticalTimeline();
-    $('#vt2').verticalTimeline();
-    $('#vt3').verticalTimeline({
-      startLeft: false
-    });
-    $('#vt4').verticalTimeline({
-      startLeft: false,
-      arrows: false,
-      alternate: false
-    });
-    $('#vt5').verticalTimeline({
-      animate: 'fade'
-    });
-    $('#vt6').verticalTimeline({
-      animate: 'slide'
-    });
-
-    //hover
-    $('.hover-img').picturehover({
-      caption: 'alt',
-    })
-
-    //progress bar
-    $('.jq').LineProgressbar({
-      percentage: 90,
-      radius: '3px',
-      height: '20px',
-    });
-    $('.html').LineProgressbar({
-      percentage: 80,
-      radius: '3px',
-      height: '20px',
-      fillBackgroundColor: '#DA4453'
-    });
-    $('.css').LineProgressbar({
-      percentage: 70,
-      radius: '3px',
-      height: '20px',
-      fillBackgroundColor: '#E0C341'
-    });
-
-    //scroll top
-    $("body").toTopButton({});
-
-  </script>
+            // Parallax effect for profile section
+            $(window).scroll(function () {
+                var scrolled = $(this).scrollTop();
+                var rate = scrolled * -0.5;
+                $('#profile').css('transform', 'translate3d(0, ' + rate + 'px, 0)');
+            });
+        });
+    </script>
 </body>
 
 </html>
