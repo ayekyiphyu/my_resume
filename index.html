@@ -678,6 +678,365 @@
         </div>
     </section> -->
 
+    <section>
+        <!-- Add this before the closing </body> tag -->
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <h4>AI Career Assistant</h4>
+                <button class="chatbot-close">&times;</button>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">Hello! I'm your AI career assistant. Ask me anything about this resume.
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Ask about my experience..." class="chatbot-text">
+                <button class="chatbot-send">Send</button>
+            </div>
+        </div>
+        <button class="chatbot-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+
+        <style>
+            /* Chatbot Styles */
+            .chatbot-container {
+                position: fixed;
+                bottom: 20px;
+                right: 100px;
+                width: 350px;
+                height: 500px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                transform: translateY(100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 1000;
+                font-family: 'Segoe UI', system-ui, sans-serif;
+            }
+
+            .chatbot-container.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .chatbot-header {
+                background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%);
+                color: white;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .chatbot-header h4 {
+                margin: 0;
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+
+            .chatbot-close {
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                line-height: 1;
+            }
+
+            .chatbot-messages {
+                flex: 1;
+                padding: 15px;
+                overflow-y: auto;
+                background: #f9f9f9;
+            }
+
+            .chatbot-input {
+                display: flex;
+                padding: 10px;
+                border-top: 1px solid #eee;
+                background: white;
+            }
+
+            .chatbot-text {
+                flex: 1;
+                padding: 12px 15px;
+                border: 1px solid #ddd;
+                border-radius: 25px;
+                outline: none;
+                font-size: 0.9rem;
+            }
+
+            .chatbot-send {
+                background: #4a6cf7;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                padding: 0 20px;
+                margin-left: 10px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: background 0.2s;
+            }
+
+            .chatbot-send:hover {
+                background: #3a5ce4;
+            }
+
+            .chatbot-toggle {
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+                transition: transform 0.2s;
+            }
+
+            .chatbot-toggle:hover {
+                transform: scale(1.1);
+            }
+
+            .chatbot-toggle svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .message {
+                margin-bottom: 15px;
+                max-width: 80%;
+                padding: 12px 16px;
+                border-radius: 18px;
+                line-height: 1.4;
+                font-size: 0.9rem;
+                animation: fadeIn 0.3s ease;
+            }
+
+            .user-message {
+                background: #e3f2fd;
+                margin-left: auto;
+                border-bottom-right-radius: 5px;
+                color: #1a73e8;
+            }
+
+            .bot-message {
+                background: white;
+                margin-right: auto;
+                border-bottom-left-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                color: #333;
+            }
+
+            .typing-indicator {
+                display: inline-flex;
+                padding: 10px 15px;
+                background: white;
+                border-radius: 18px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                margin-bottom: 15px;
+            }
+
+            .typing-indicator span {
+                height: 8px;
+                width: 8px;
+                background: #aaa;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 0 2px;
+                animation: typing 1s infinite;
+            }
+
+            .typing-indicator span:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .typing-indicator span:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+            @keyframes typing {
+                0% {
+                    transform: translateY(0);
+                    opacity: 0.6;
+                }
+
+                50% {
+                    transform: translateY(-5px);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateY(0);
+                    opacity: 0.6;
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 480px) {
+                .chatbot-container {
+                    width: 90%;
+                    right: 5%;
+                    height: 70vh;
+                }
+            }
+        </style>
+
+        <script>
+            // OpenAI API Integration
+            document.addEventListener('DOMContentLoaded', function () {
+                const chatbotContainer = document.querySelector('.chatbot-container');
+                const chatbotToggle = document.querySelector('.chatbot-toggle');
+                const chatbotClose = document.querySelector('.chatbot-close');
+                const chatbotMessages = document.querySelector('.chatbot-messages');
+                const chatbotText = document.querySelector('.chatbot-text');
+                const chatbotSend = document.querySelector('.chatbot-send');
+
+                // Your OpenAI API Key (keep this secure in production)
+                const OPENAI_API_KEY = 'sk-your-api-key-here'; // Replace with your actual key
+
+                // System message to guide the AI's behavior
+                const SYSTEM_MESSAGE = {
+                    role: "system",
+                    content: `You are an AI career assistant for a software engineer's resume.
+      The candidate has 5+ years of experience in full-stack development with these skills:
+      - Frontend: React, Next.js, TypeScript, Tailwind CSS
+      - Backend: Node.js, Python, FastAPI, Rust
+      - Databases: MongoDB, PostgreSQL, SQLite
+      - DevOps: Docker, AWS, GitHub Actions
+
+      Work Experience:
+      1. 株式会社キャムテック (2023-2025): E-commerce platforms, enterprise dashboards
+      2. ファーストループテクノロジー (2020-2023): Corporate websites, CMS development
+      3. 株式会社グローバルウェイ (2019-2020): Angular.js, PHP systems
+
+      Answer questions professionally but conversationally. Keep responses concise (1-3 sentences).
+      If asked unrelated questions, politely steer back to resume topics.`
+                };
+
+                // Toggle chatbot visibility
+                chatbotToggle.addEventListener('click', () => {
+                    chatbotContainer.classList.toggle('active');
+                });
+
+                chatbotClose.addEventListener('click', () => {
+                    chatbotContainer.classList.remove('active');
+                });
+
+                // Send message to OpenAI API
+                async function sendMessageToAI(message) {
+                    try {
+                        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${OPENAI_API_KEY}`
+                            },
+                            body: JSON.stringify({
+                                model: "gpt-3.5-turbo",
+                                messages: [
+                                    SYSTEM_MESSAGE,
+                                    { role: "user", content: message }
+                                ],
+                                temperature: 0.7,
+                                max_tokens: 150
+                            })
+                        });
+
+                        const data = await response.json();
+                        return data.choices[0].message.content;
+                    } catch (error) {
+                        console.error("Error calling OpenAI API:", error);
+                        return "I'm having trouble connecting to the AI service. Please try again later.";
+                    }
+                }
+
+                // Send message function
+                async function sendMessage() {
+                    const message = chatbotText.value.trim();
+                    if (message === '') return;
+
+                    // Add user message
+                    addMessage(message, 'user');
+                    chatbotText.value = '';
+
+                    // Show typing indicator
+                    showTyping();
+
+                    // Get AI response
+                    try {
+                        const aiResponse = await sendMessageToAI(message);
+                        addMessage(aiResponse, 'bot');
+                    } catch (error) {
+                        addMessage("Sorry, I encountered an error processing your request.", 'bot');
+                    }
+                }
+
+                // Send message on button click or Enter key
+                chatbotSend.addEventListener('click', sendMessage);
+                chatbotText.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') sendMessage();
+                });
+
+                // Add message to chat
+                function addMessage(text, sender) {
+                    // Remove typing indicator
+                    const typing = chatbotMessages.querySelector('.typing-indicator');
+                    if (typing) typing.remove();
+
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message', `${sender}-message`);
+                    messageDiv.textContent = text;
+                    chatbotMessages.appendChild(messageDiv);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }
+
+                // Show typing indicator
+                function showTyping() {
+                    const typingDiv = document.createElement('div');
+                    typingDiv.classList.add('typing-indicator');
+                    typingDiv.innerHTML = '<span></span><span></span><span></span>';
+                    chatbotMessages.appendChild(typingDiv);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }
+
+                // Auto-open after delay
+                setTimeout(() => {
+                    if (!localStorage.getItem('chatbotShown')) {
+                        chatbotContainer.classList.add('active');
+                        localStorage.setItem('chatbotShown', 'true');
+                    }
+                }, 5000);
+            });
+        </script>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Portfolio Design By AYE KYI PHYU - FullStack Developer</p>
