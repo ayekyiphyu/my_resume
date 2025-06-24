@@ -10,568 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 10px 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .nav a:hover {
-            background: #2c3e50;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Common Section Styles */
-        .wide {
-            width: 100%;
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .inner-block {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #3498db;
-            border-radius: 2px;
-        }
-
-        /* Profile Section */
-        #profile {
-            background-color: #2c3e50;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-inner h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .profile-btn {
-            font-size: 1.5rem;
-            color: #ecf0f1;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.5s both;
-        }
-
-        .social {
-            animation: fadeInUp 1s ease 1s both;
-        }
-
-        .social a {
-            display: inline-block;
-            margin: 0 15px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            line-height: 50px;
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .social a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* About Section */
-        #about {
-            background-color: #ffffff;
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-txt-wrap {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .about-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .about-txt-wrap ul {
-            list-style: none;
-        }
-
-        .about-txt-wrap li {
-            margin: 15px 0;
-            font-size: 1.1rem;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-
-        .profile-tit {
-            font-weight: 700;
-            color: #2c3e50;
-        }
-
-        .about-img-wrap {
-            text-align: center;
-        }
-
-        .about-img {
-            position: relative;
-            display: inline-block;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .middle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(44, 62, 80, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .about-img:hover .middle {
-            opacity: 1;
-        }
-
-        .text {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        /* Service Section */
-        #service {
-            background-color: #f8f9fa;
-        }
-
-        .service-block {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .owl-carousel .item {
-            background: #ffffff;
-            padding: 40px 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e9ecef;
-        }
-
-        .owl-carousel .item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #3498db;
-        }
-
-        .font-icon {
-            font-size: 3rem;
-            color: #3498db;
-            margin-bottom: 20px;
-        }
-
-        .service-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        /* Skill Section */
-        #skill {
-            background-color: #ffffff;
-        }
-
-        .skill-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 20px;
-            padding: 40px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .skill-layout div {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e9ecef;
-        }
-
-        .skill-layout div:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #3498db;
-        }
-
-        .skill-layout img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
-
-        /* Experience Section */
-        #experience {
-            background-color: #f8f9fa;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .company-name {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .job-period {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .company-info {
-            background: #ffffff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .skills-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .skills-list li {
-            background: #ffffff;
-            margin: 8px 0;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .skills-list li:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-section {
-            background: #ffffff;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .project-title {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-weight: 600;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-        }
-
-        .project-list {
-            list-style: none;
-        }
-
-        .project-list li {
-            background: #f8f9fa;
-            margin: 8px 0;
-            padding: 8px 15px;
-            border-radius: 6px;
-            border-left: 3px solid #3498db;
-        }
-
-        .school {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-        }
-
-        /* Work Section */
-        #work {
-            background-color: #ffffff;
-        }
-
-        .work-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .hover-card {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e9ecef;
-        }
-
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #3498db;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .work-btn-outline {
-            background: rgba(52, 152, 219, 0.1);
-            border: 2px solid #3498db;
-            color: #3498db;
-        }
-
-        .work-btn-outline-success {
-            background: rgba(46, 204, 113, 0.1);
-            border: 2px solid #2ecc71;
-            color: #2ecc71;
-        }
-
-        .work-btn-outline-secondary {
-            background: rgba(108, 117, 125, 0.1);
-            border: 2px solid #6c757d;
-            color: #6c757d;
-        }
-
-        .work-btn-outline-info {
-            background: rgba(23, 162, 184, 0.1);
-            border: 2px solid #17a2b8;
-            color: #17a2b8;
-        }
-
-        .work-btn-outline-warning {
-            background: rgba(255, 193, 7, 0.1);
-            border: 2px solid #ffc107;
-            color: #ffc107;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .mt-10 {
-            margin-top: 10px;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            font-size: 1.1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                top: 10px;
-                right: 10px;
-                padding: 15px;
-            }
-
-            .grid-layout {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .profile-inner h1 {
-                font-size: 2.5rem;
-            }
-
-            .title {
-                font-size: 2rem;
-            }
-
-            .skill-layout {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            }
-
-            .work-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll to top button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: #2c3e50;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: none;
-        }
-
-        .scroll-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: #3498db;
-        }
-
-        /* Additional animation classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
 </head>
 
 <body>
@@ -581,7 +22,7 @@
         <a data-scroll class="hov-color-green" href="#service">Service</a>
         <a data-scroll class="hov-color-blue" href="#skill">Skill</a>
         <a data-scroll class="hov-color-blue" href="#experience">Experience</a>
-        <a data-scroll class="hov-color-blue" href="#work">Work</a>
+        <!-- <a data-scroll class="hov-color-blue" href="#work">Work</a> -->
     </div>
 
     <!-- Profile Section -->
@@ -726,14 +167,18 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
+
+
+
+
     <section id="experience" class="wide">
         <h1 class="title">Experience</h1>
+
+
         <div class="inner-block">
             <h2 class="text-center"><i class="fas fa-briefcase"></i></h2>
 
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">株式会社キャムテック</h3>
                     <h4 class="job-period">2023年04月 ~ 2025年03月</h4>
@@ -741,45 +186,49 @@
                         <p>【所属】フルスタック開発企業 日本の株式会社　＠日本</p>
                     </div>
                     <ul class="skills-list">
-                        <li>- React.js / Next.js</li>
-                        <li>- TypeScript / JavaScript</li>
-                        <li>- Node.js / Express</li>
-                        <li>- MongoDB / PostgreSQL</li>
-                        <li>- REST API / GraphQL</li>
-                        <li>- Docker / AWS</li>
-                        <li>- Git / GitHub</li>
-                        <li>- Tailwind CSS / Styled Components</li>
-                        <li>- Jest / Cypress (Testing)</li>
-                        <li>- Figma / Adobe XD</li>
+                        <li>React.js / Next.js</li>
+                        <li>TypeScript / JavaScript</li>
+                        <li>Node.js / Express</li>
+                        <li>Python / FastAPI</li>
+                        <li>Rust / Actix-web</li>
+                        <li>MongoDB / PostgreSQL / SQLite</li>
+                        <li>REST API / GraphQL</li>
+                        <li>Docker / AWS</li>
+                        <li>Git / GitHub</li>
+                        <li>Tailwind CSS / Styled Components</li>
+                        <li>Jest / Cypress (Testing)</li>
+                        <li>Figma / Adobe XD</li>
+                        <li>UV / Unicorn</li>
+                        <li>Database Design</li>
                     </ul>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [Eコマースプラットフォーム開発]</u></p>
                         <ul class="project-list">
-                            <li>- React.js + Next.jsを使用したフロントエンド開発</li>
-                            <li>- Node.js + Expressでバックエンド API 開発</li>
-                            <li>- MongoDB を使用したデータベース設計</li>
-                            <li>- Stripe決済システム統合</li>
-                            <li>- AWS S3 + CloudFront でファイル管理</li>
-                            <li>- Docker コンテナ化とデプロイメント</li>
+                            <li>React.js + Next.jsを使用したフロントエンド開発</li>
+                            <li>Node.js + Expressでバックエンド API 開発</li>
+                            <li>Python + FastAPIでREST API開発</li>
+                            <li>MongoDB / SQLiteを使用したデータベース設計</li>
+                            <li>Stripe決済システム統合</li>
+                            <li>AWS S3 + CloudFront でファイル管理</li>
+                            <li>Docker コンテナ化とデプロイメント</li>
+                            <li>Unicornを使用したPythonアプリ配信</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [企業向けダッシュボード]</u></p>
                         <ul class="project-list">
-                            <li>- React.js + TypeScript でUI開発</li>
-                            <li>- GraphQL APIとの連携</li>
-                            <li>- PostgreSQL データベース最適化</li>
-                            <li>- Chart.js を使用したデータ可視化</li>
-                            <li>- レスポンシブデザイン実装</li>
+                            <li>React.js + TypeScript でUI開発</li>
+                            <li>GraphQL APIとの連携</li>
+                            <li>PostgreSQL / SQLite データベース最適化</li>
+                            <li>Chart.js を使用したデータ可視化</li>
+                            <li>レスポンシブデザイン実装</li>
+                            <li>Rustでパフォーマンス重視のバックエンド開発</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div class="job-section">
                     <h3 class="text-center company-name">ファーストループテクノロジー株式会社</h3>
                     <h4 class="job-period">2020年10月 ~ 2023年03月</h4>
@@ -787,44 +236,45 @@
                         <p>【所属】ウェブ開発・システム開発企業 日本の株式会社　＠日本</p>
                     </div>
                     <ul class="skills-list">
-                        <li>- React.js / Vue.js</li>
-                        <li>- JavaScript / ES6+</li>
-                        <li>- PHP / Laravel</li>
-                        <li>- MySQL / Firebase</li>
-                        <li>- REST API 開発</li>
-                        <li>- Bootstrap / Sass</li>
-                        <li>- WordPress カスタム開発</li>
-                        <li>- Git / GitLab</li>
-                        <li>- Adobe Creative Suite</li>
-                        <li>- レスポンシブデザイン</li>
+                        <li>React.js / Vue.js</li>
+                        <li>JavaScript / ES6+</li>
+                        <li>PHP / Laravel</li>
+                        <li>Python / Django</li>
+                        <li>MySQL / Firebase / SQLite</li>
+                        <li>REST API 開発</li>
+                        <li>Bootstrap / Sass</li>
+                        <li>WordPress カスタム開発</li>
+                        <li>Git / GitLab</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>レスポンシブデザイン</li>
+                        <li>Database Management</li>
                     </ul>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [コーポレートウェブサイト開発]</u></p>
                         <ul class="project-list">
-                            <li>- React.js でSPAアプリケーション開発</li>
-                            <li>- Laravel バックエンド API 開発</li>
-                            <li>- MySQL データベース設計・構築</li>
-                            <li>- Adobe XD からのデザイン実装</li>
-                            <li>- SEO最適化とパフォーマンス向上</li>
+                            <li>React.js でSPAアプリケーション開発</li>
+                            <li>Laravel バックエンド API 開発</li>
+                            <li>Python + DjangoでREST API構築</li>
+                            <li>MySQL / SQLite データベース設計・構築</li>
+                            <li>Adobe XD からのデザイン実装</li>
+                            <li>SEO最適化とパフォーマンス向上</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [ECサイト リニューアル]</u></p>
                         <ul class="project-list">
-                            <li>- Vue.js + Vuex でフロントエンド構築</li>
-                            <li>- PHP + Laravel でバックエンド開発</li>
-                            <li>- 決済システム統合（PayPal, Stripe）</li>
-                            <li>- Firebase を使用したリアルタイム機能</li>
-                            <li>- レスポンシブデザイン対応</li>
+                            <li>Vue.js + Vuex でフロントエンド構築</li>
+                            <li>PHP + Laravel でバックエンド開発</li>
+                            <li>決済システム統合（PayPal, Stripe）</li>
+                            <li>Firebase / SQLite を使用したリアルタイム機能</li>
+                            <li>レスポンシブデザイン対応</li>
+                            <li>データベース最適化とパフォーマンス改善</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">株式会社グローバルウェイ ( 英文: Globalway, Inc. )</h3>
                     <h4 class="job-period">2019年01月 ~ 2020年09月</h4>
@@ -832,115 +282,115 @@
                         <p>【所属】IT開発系企業 日本の株式会社　＠日本</p>
                     </div>
                     <ul class="skills-list">
-                        <li>- Angular Js</li>
-                        <li>- Mobile Responsive Design</li>
-                        <li>- Photoshop/Illustrator/ InDesign/ Adobe Dreamweaver/ sublime Text</li>
-                        <li>- Create home page Design</li>
-                        <li>- Git/ SourcesTree</li>
-                        <li>- CSS/sass</li>
-                        <li>- jQuery plugin</li>
-                        <li>- JavaScript</li>
-                        <li>- InDesignを使って会社の為に名刺を作ることがありました。</li>
+                        <li>Angular Js</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Photoshop/Illustrator/ InDesign/ Adobe Dreamweaver</li>
+                        <li>Create home page Design</li>
+                        <li>Git/ SourcesTree</li>
+                        <li>CSS/sass</li>
+                        <li>jQuery plugin</li>
+                        <li>JavaScript</li>
+                        <li>Database Integration</li>
+                        <li>REST API Development</li>
                     </ul>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [ Voxer OMS Order Management System]</u></p>
                         <ul class="project-list">
-                            <li>- Photoshop/illustrator を使ってデザイン設計を作成</li>
-                            <li>- Angaular Jsを使ってfront end ぺジーを作成</li>
-                            <li>- Git (sourcetree)を使う</li>
-                            <li>- Bootstrp4.3.1,Jquery pluginを使う</li>
+                            <li>Photoshop/illustrator を使ってデザイン設計を作成</li>
+                            <li>Angaular Jsを使ってfront end ページを作成</li>
+                            <li>Git (sourcetree)を使用したバージョン管理</li>
+                            <li>Bootstrap4.3.1,Jquery pluginを使用</li>
+                            <li>データベース連携機能の実装</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [ Globalway Company Home Page]</u></p>
                         <ul class="project-list">
-                            <li>- Wordpress を使って新しいテーマを作成</li>
-                            <li>- Photoshop/Illustratorを使って画像を作成</li>
-                            <li>- PHPを使う</li>
-                            <li>- Boostrapを使う</li>
-                            <li>- Wordpress Custom Field Templateを作成</li>
-                            <li>- Saleforce form使う</li>
-                            <li>- Git (source tree)</li>
+                            <li>WordPress を使って新しいテーマを作成</li>
+                            <li>Photoshop/Illustratorを使って画像を作成</li>
+                            <li>PHPを使った動的コンテンツ開発</li>
+                            <li>Bootstrap を使ったレスポンシブ対応</li>
+                            <li>WordPress Custom Field Templateを作成</li>
+                            <li>Salesforce form連携</li>
+                            <li>Git (source tree)を使用</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [ Tech Globalway Website]</u></p>
                         <ul class="project-list">
-                            <li>- Wordpress</li>
-                            <li>- Photoshop/Illustratorを使って画像を作成</li>
-                            <li>- Photoshop/Illustratorの中にデザインmock up 作成</li>
-                            <li>- HTML5, Javascript, Jqueryを使って.html mockup 作成</li>
-                            <li>- Boostrap3.4.1 使う</li>
-                            <li>- Wordpress Custom Field Templateを作成</li>
-                            <li>- Saleforce form使う</li>
-                            <li>- Git (source tree)</li>
-                            <li>- Multiple Language Plugin</li>
-                            <li>- 色々pluginを使う</li>
+                            <li>WordPressカスタムテーマ開発</li>
+                            <li>Photoshop/Illustratorを使って画像・デザイン作成</li>
+                            <li>HTML5, Javascript, Jqueryを使ったモックアップ作成</li>
+                            <li>Bootstrap3.4.1 を使用</li>
+                            <li>WordPress Custom Field Template作成</li>
+                            <li>Salesforce form統合</li>
+                            <li>Multiple Language Plugin実装</li>
+                            <li>各種WordPressプラグイン活用</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： [ ITJ]</u></p>
                         <ul class="project-list">
-                            <li>- HTML, CSS, JavaScript, jQuery</li>
-                            <li>- Git (SourceTree)</li>
+                            <li>HTML, CSS, JavaScript, jQuery</li>
+                            <li>Git (SourceTree)を使用したプロジェクト管理</li>
+                            <li>レスポンシブWebデザイン実装</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">グットビー株式会社</h3>
                     <h4 class="job-period">2016年10月1日 ~ 2018年12月1日</h4>
                     <div class="company-info">
                         <p>【所属】IT開発系企業　＠日本</p>
-                        <p>【業務詳細】</p>
+                        <p>【業務詳細】日本企業で使用する業務用システムを開発</p>
                     </div>
                     <ul class="skills-list">
-                        <li>日本企業で使用する業務用システムを開発 自社の中に使う予定表システムを開発</li>
-                        <li>ミャンマー人採用サイトシステムを開発 ミャンマーで使うポイントシステムを開発</li>
-                        <li>首都システムを開発</li>
+                        <li>PHP / MySQL</li>
+                        <li>Bootstrap / JavaScript / jQuery</li>
+                        <li>Zend Framework</li>
+                        <li>Database Design</li>
+                        <li>System Testing</li>
+                        <li>業務システム開発</li>
+                        <li>採用サイトシステム開発</li>
+                        <li>ポイントシステム開発</li>
                     </ul>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： 社内予定表</u></p>
+                        <p class="project-title">社内予定表システム</p>
                         <ul class="project-list">
-                            <li>・会社員の登録、メモ登録</li>
-                            <li>・言語：PHP, Mysql, Bootstrap, Javascript, Jquery</li>
-                            <li>・使用データベース：Mysql</li>
-                            <li>・担当業務：コーディング、テストケース設計</li>
+                            <li>会社員の登録、メモ登録機能</li>
+                            <li>言語：PHP, MySQL, Bootstrap, JavaScript, jQuery</li>
+                            <li>使用データベース：MySQL</li>
+                            <li>担当業務：コーディング、テストケース設計</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： ミャンマー人採用システム</u></p>
+                        <p class="project-title">ミャンマー人採用システム</p>
                         <ul class="project-list">
-                            <li>・会員登録, 仕事探し, smtp mail, 引退についての管理</li>
-                            <li>・言語：Zend PHP, Mysql, Bootstrap, Javascript, Jquery</li>
-                            <li>・使用データベース：Mysql</li>
-                            <li>・担当業務：コーディング、テストケース設計</li>
+                            <li>会員登録, 仕事探し, SMTP mail, 退職管理機能</li>
+                            <li>言語：Zend PHP, MySQL, Bootstrap, JavaScript, jQuery</li>
+                            <li>使用データベース：MySQL</li>
+                            <li>担当業務：コーディング、テストケース設計</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： ミャンマーポイントシステム</u></p>
+                        <p class="project-title">ミャンマーポイントシステム</p>
                         <ul class="project-list">
-                            <li>・会員登録, プリペイドカード登録、お問い合わせ,アンケート回答, アンケート登録</li>
-                            <li>・言語：Zend PHP, Mysql, Bootstrap, Javascript, Jquery</li>
-                            <li>・使用データベース：Mysql</li>
-                            <li>・担当業務：コーディング、テストケース設計</li>
+                            <li>会員登録, プリペイドカード登録、お問い合わせ、アンケート機能</li>
+                            <li>言語：Zend PHP, MySQL, Bootstrap, JavaScript, jQuery</li>
+                            <li>使用データベース：MySQL</li>
+                            <li>担当業務：コーディング、テストケース設計</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">Aidam Myanmar Co., Ltd (Sea Dream Co.,Ltd)</h3>
                     <h4 class="job-period">2014年05月 ~ 2016年07月</h4>
@@ -949,67 +399,85 @@
                         <p>【業務詳細】日本企業で使用する業務用WEBアプリケーションを開発</p>
                     </div>
                     <ul class="skills-list">
-                        <li>・ミャンマーで開発したシステムを日本のスーパーで利用</li>
-                        <li>・日本語での開発・プロジェクト管理</li>
-                        <li>・日本とビデオミーティングや担当者との会議を実施</li>
-                        <li>・全員と相談して自社サイトを作成 ・主にwordpressのサイトを作成</li>
-                        <li>・3月日本でをwordpress/phpのトレーニングに参加する</li>
+                        <li>PHP / MySQL</li>
+                        <li>JavaScript / jQuery / AJAX</li>
+                        <li>HTML5 / CSS3</li>
+                        <li>Bootstrap3</li>
+                        <li>WordPress Development</li>
+                        <li>Database Design</li>
+                        <li>System Testing</li>
+                        <li>プロジェクト管理</li>
                     </ul>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： スケジュール管理システム（社内利用）</u></p>
+                        <p class="project-title">スケジュール管理システム（社内利用）</p>
                         <ul class="project-list">
-                            <li>・利用者がスケジュール登録、修正ができるシステムの開発（一週間、一ヶ月、一年単位で表示可能）</li>
-                            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML5, CSS3, Bootstrap3</li>
-                            <li>・使用データベース：MySQL</li>
-                            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト</li>
+                            <li>利用者がスケジュール登録、修正ができるシステムの開発</li>
+                            <li>一週間、一ヶ月、一年単位で表示可能</li>
+                            <li>言語：PHP, JavaScript, jQuery, AJAX, HTML5, CSS3, Bootstrap3</li>
+                            <li>使用データベース：MySQL</li>
+                            <li>担当業務：コーディング、結合テスト、総合テスト、受け入れテスト</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： レポートシステム(メールの送受信システム)</u></p>
+                        <p class="project-title">レポートシステム(メールの送受信システム)</p>
                         <ul class="project-list">
-                            <li>・社内でイベントなどの際に連絡できるシステム</li>
-                            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML, CSS3, Bootstrap3, acmailer</li>
-                            <li>・使用データベース：MySQL</li>
-                            <li>・担当業務：コーディング、結合テスト、総合テスト、受け入れテスト</li>
+                            <li>社内でイベントなどの際に連絡できるシステム</li>
+                            <li>言語：PHP, JavaScript, jQuery, AJAX, HTML, CSS3, Bootstrap3, acmailer</li>
+                            <li>使用データベース：MySQL</li>
+                            <li>担当業務：コーディング、結合テスト、総合テスト、受け入れテスト</li>
                         </ul>
                     </div>
 
                     <div class="project-section">
-                        <p class="project-title"><u>プロジェクト名： 社内の勤怠管理システム</u></p>
+                        <p class="project-title">社内の勤怠管理システム</p>
                         <ul class="project-list">
-                            <li>・休暇申請、タイムチェック、シフト登録などが出来る社内用のアプリケーション開発</li>
-                            <li>・言語：PHP, Javascript, Jquery, AJAX, HTML5, CSS3, Bootstrap3.</li>
-                            <li>・使用データベース：MySQL</li>
-                            <li>・担当業務：　コーディング、結合テスト、総合テスト、受け入れテスト、手順書</li>
+                            <li>休暇申請、タイムチェック、シフト登録などが出来る社内用のアプリケーション開発</li>
+                            <li>言語：PHP, JavaScript, jQuery, AJAX, HTML5, CSS3, Bootstrap3</li>
+                            <li>使用データベース：MySQL</li>
+                            <li>担当業務：コーディング、結合テスト、総合テスト、受け入れテスト、手順書</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">Progineer Co.Ltd(Singapore)</h3>
                     <h4 class="job-period">2013年03月 ~ 2014年04月</h4>
                     <div class="company-info">
                         <p>【所属】ソフトウェア 会社　＠ミャンマー</p>
-                        <p>【業務詳細】</p>
                     </div>
                     <ul class="skills-list">
-                        <li>・オフィスのアポイントメント調整 ・Singapore向け　人材管理システム端末開発</li>
-                        <li>・自社のサイト ・自社のオンラインショッピング ・レンタルサービス</li>
-                        <li>・クライアントのためスケジュール作成 ・ウェブページ作成 ・デザイン作成</li>
-                        <li>・お客様とコミュニケーション</li>
+                        <li>HTML5 / CSS3 / JavaScript / jQuery</li>
+                        <li>SQL Server 2008</li>
+                        <li>Adobe Creative Package</li>
+                        <li>Drupal CMS</li>
+                        <li>Bootstrap2</li>
+                        <li>Database Management</li>
+                        <li>Web Design</li>
+                        <li>Client Communication</li>
                     </ul>
 
                     <div class="project-section">
-                        <p class="project-title"><u>システム環境</u></p>
+                        <p class="project-title">主な業務内容</p>
                         <ul class="project-list">
-                            <li>Windows 7, Microsoft Office, SQL Server 2008, HTML5, JavaScript, JQuery, CSS3, Adobe
-                                Creative Package,
-                                Drupal, Pure CSS, Bootstrap2</li>
+                            <li>オフィスのアポイントメント調整</li>
+                            <li>Singapore向け人材管理システム端末開発</li>
+                            <li>自社のサイト・オンラインショッピング・レンタルサービス開発</li>
+                            <li>クライアントのためスケジュール作成</li>
+                            <li>ウェブページ作成・デザイン作成</li>
+                            <li>お客様とコミュニケーション</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <p class="project-title">システム環境</p>
+                        <ul class="project-list">
+                            <li>Windows 7, Microsoft Office, SQL Server 2008</li>
+                            <li>HTML5, JavaScript, jQuery, CSS3</li>
+                            <li>Adobe Creative Package, Drupal, Pure CSS, Bootstrap2</li>
                         </ul>
                     </div>
                 </div>
@@ -1017,8 +485,7 @@
 
             <!-- Education Section -->
             <h2 class="text-center"><i class="fas fa-graduation-cap"></i></h2>
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">学歴</h3>
                     <div class="project-section">
@@ -1038,8 +505,7 @@
 
             <!-- University Section -->
             <h2 class="text-center"><i class="fas fa-university"></i></h2>
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">大学</h3>
                     <div class="project-section">
@@ -1055,8 +521,7 @@
 
             <!-- Certifications Section -->
             <h2 class="text-center"><i class="fas fa-award"></i></h2>
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">取得済み資格</h3>
                     <div class="project-section">
@@ -1080,8 +545,7 @@
 
             <!-- Language Skills Section -->
             <h2 class="text-center"><i class="fas fa-globe-asia"></i></h2>
-            <div
-                style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); margin-bottom: 30px;">
+            <div class="experience-card">
                 <div>
                     <h3 class="text-center company-name">言語スキル</h3>
                     <div class="project-section">
@@ -1098,7 +562,7 @@
     </section>
 
     <!-- Work Section -->
-    <section id="work" class="wide">
+    <!-- <section id="work" class="wide">
         <h1 class="title">Work Portfolio</h1>
         <div class="inner-block">
             <div class="work-layout">
@@ -1212,7 +676,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="footer">
