@@ -26,14 +26,3 @@ This is my personal portfolio website showcasing my web development skills and p
 - jQuery
 - Responsive Web Design
 
-**Design Philosophy:**
-The portfolio emphasizes simplicity and functionality while maintaining a professional appearance. Every element is crafted to provide an intuitive user experience while showcasing technical capabilities.
-
----
-
-**Live Demo:** [ayekyiphyu.github.io/my_resume/]
-**Source Code:** [git@github.com:ayekyiphyu/my_resume.git]
-
----
-
-*This portfolio demonstrates my ability to create engaging, interactive web experiences using fundamental web technologies without relying on heavy frameworks.*
